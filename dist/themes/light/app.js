@@ -294,7 +294,7 @@ function list(path) {
    <div class="mdui-row"> 
     <ul id="list" class="mdui-list"> 
     </ul> 
-    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">共 <span class="number"></span> 项</div>
+    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">共 <span class="number"></span> 項</div>
    </div>
   `;
     $('#content').html(content);
@@ -378,7 +378,7 @@ function list(path) {
         successResultCallback,
         function(path) {
             $('#spinner').remove();
-            var pass = prompt("目录加密, 请输入密码", "");
+            var pass = prompt("輸入密碼！", "");
             localStorage.setItem('password' + path, pass);
             if (pass != null && pass != "") {
                 list(path);
@@ -524,7 +524,7 @@ function render_search_result_list() {
    <div class="mdui-row"> 
     <ul id="list" class="mdui-list"> 
     </ul> 
-    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">共 <span class="number"></span> 项</div>
+    <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">共 <span class="number"></span> 項</div>
    </div>
   `;
     $('#content').html(content);
@@ -671,7 +671,7 @@ function onSearchResultItemClick(a_ele) {
     var cur = window.current_drive_order;
     var dialog = mdui.dialog({
         title: '',
-        content: '<div class="mdui-text-center mdui-typo-title mdui-m-b-1">正在获取目标路径...</div><div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>',
+        content: '<div class="mdui-text-center mdui-typo-title mdui-m-b-1">讀取中</div><div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>',
         // content: '<div class="mdui-spinner mdui-spinner-colorful mdui-center"></div>',
         history: false,
         modal: true,
@@ -691,12 +691,12 @@ function onSearchResultItemClick(a_ele) {
                 modal: true,
                 closeOnEsc: true,
                 buttons: [{
-                    text: '打开',
+                    text: '開啟',
                     onClick: function() {
                         window.location.href = href
                     }
                 }, {
-                    text: '新标签中打开',
+                    text: '新分頁開啟',
                     onClick: function() {
                         window.open(href)
                     }
@@ -706,13 +706,13 @@ function onSearchResultItemClick(a_ele) {
         }
         dialog.close();
         dialog = mdui.dialog({
-            title: '<i class="mdui-icon material-icons">&#xe811;</i>获取目标路径失败',
-            content: 'o(╯□╰)o 可能是因为该盘中并不存在此项！也可能因为没有把【与我共享】的文件添加到个人云端硬盘中！',
+            title: '<i class="mdui-icon material-icons">&#xe811;</i>讀取失敗',
+            content: '多半是炸了OwO',
             history: false,
             modal: true,
             closeOnEsc: true,
             buttons: [
-                { text: 'WTF ???' }
+                { text: '哭啊' }
             ]
         });
     })
@@ -777,7 +777,7 @@ function file_code(path) {
 <pre id="editor" ></pre>
 </div>
 <div class="mdui-textfield">
-  <label class="mdui-textfield-label">下载地址</label>
+  <label class="mdui-textfield-label">下载</label>
   <input class="mdui-textfield-input" type="text" value="${href}"/>
 </div>
 <a href="${href}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
@@ -913,16 +913,6 @@ function file_video(path) {
   <br>
   ${playerUI}
   <br>${playBtn}
-  <!-- 固定标签 -->
-  <div class="mdui-textfield">
-    <label class="mdui-textfield-label">下载地址</label>
-    <input class="mdui-textfield-input" type="text" value="${url}"/>
-  </div>
-  <div class="mdui-textfield">
-    <label class="mdui-textfield-label">HTML 引用地址</label>
-    <textarea class="mdui-textfield-input"><video><source src="${url}" type="video/mp4"></video></textarea>
-  </div>
-</div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
   `;
     $('#content').html(content);
@@ -939,9 +929,9 @@ function file_video(path) {
             i18n: {
                 speed: '速度',
                 normal: '正常',
-                quality: '质量',
+                quality: '畫質',
                 captions: '字幕',
-                disabled: '禁用',
+                disabled: '停用',
             },
             blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
             autoplay: true,
@@ -979,9 +969,9 @@ function file_video(path) {
             i18n: {
                 speed: '速度',
                 normal: '正常',
-                quality: '质量',
+                quality: '畫質',
                 captions: '字幕',
-                disabled: '禁用',
+                disabled: '停用',
             },
             blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
             autoplay: true,
@@ -1000,9 +990,9 @@ function file_video(path) {
             i18n: {
                 speed: '速度',
                 normal: '正常',
-                quality: '质量',
+                quality: '畫質',
                 captions: '字幕',
-                disabled: '禁用',
+                disabled: '停用',
             },
             blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
             autoplay: true,
@@ -1105,11 +1095,6 @@ function file_audio(path) {
     <label class="mdui-textfield-label">下载地址</label>
     <input class="mdui-textfield-input" type="text" value="${url}"/>
   </div>
-  <div class="mdui-textfield">
-    <label class="mdui-textfield-label">HTML 引用地址</label>
-    <textarea class="mdui-textfield-input"><audio><source src="${url}"></audio></textarea>
-  </div>
-</div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
   `;
     $('#content').html(content);
@@ -1186,10 +1171,10 @@ function file_image(path) {
             <div class="mdui-container">
                 <div class="mdui-row-xs-2 mdui-m-b-1">
                     <div class="mdui-col">
-                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">上一张</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>上一张</button>`}
+                        ${prev_child ? `<button id="leftBtn" data-filepath="${prev_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">上一張</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>上一張</button>`}
                     </div>
                     <div class="mdui-col">
-                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">下一张</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>下一张</button>`}
+                        ${next_child ? `<button id="rightBtn"  data-filepath="${next_child}" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">下一張</button>` : `<button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" disabled>下一張</button>`}
                     </div> 
                 </div>
             </div>
@@ -1213,10 +1198,6 @@ function file_image(path) {
     <input class="mdui-textfield-input" type="text" value="${url}"/>
   </div>
   <div class="mdui-textfield">
-    <label class="mdui-textfield-label">HTML 引用地址</label>
-    <input class="mdui-textfield-input" type="text" value="<img src='${url}' />"/>
-  </div>
-        <div class="mdui-textfield">
     <label class="mdui-textfield-label">Markdown 引用地址</label>
     <input class="mdui-textfield-input" type="text" value="![](${url})"/>
   </div>
@@ -1233,7 +1214,7 @@ function file_image(path) {
         }
         const filepath = target.attr('data-filepath');
         const direction = target.attr('data-direction');
-        //console.log(`${direction}翻页 ${filepath}`);
+        //console.log(`${direction}翻頁 ${filepath}`);
         file(filepath)
     });
 }
